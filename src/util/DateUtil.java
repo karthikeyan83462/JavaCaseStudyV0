@@ -14,9 +14,7 @@ public class DateUtil {
 
     public static String generateId(String prefix) {
         String filePath = null;
-        
         if (prefix.equals("EMP") || prefix.equals("ADM") || prefix.equals("MGR")) {
-            // All user types stored in users.txt
             filePath = StorageManager.getFilePath("users");
         } else if (prefix.equals("PROJ")) {
             filePath = StorageManager.getFilePath("projects");
