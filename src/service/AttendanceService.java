@@ -36,6 +36,7 @@ public class AttendanceService {
             Attendance att = Attendance.fromString(line);
             if (att != null) {
                 result.add(att);
+                // System.out.println(result);
             }
         }
         return result;

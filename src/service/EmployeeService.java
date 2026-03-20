@@ -87,9 +87,9 @@ public class EmployeeService {
     public static List<User> searchBySkill(String skill) {
         List<User> result = new ArrayList<>();
         List<User> employees = getAllEmployees();
-        
+
         for (User emp : employees) {
-            if (emp.getSkills().contains(skill)) {
+            if (emp.getSkills().toLowerCase().contains(skill.toLowerCase())) {
                 result.add(emp);
             }
         }
