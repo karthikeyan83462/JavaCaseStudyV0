@@ -38,7 +38,7 @@ public class AuthUI {
         String email = ConsoleUtil.input("Enter email: ");
         String phone = ConsoleUtil.input("Enter phone: ");
         String department = ConsoleUtil.input("Enter department: ");
-        String designation = ConsoleUtil.input("Enter designation: ");
+        String designation = role.equals("MANAGER") ? "" : ConsoleUtil.input("Enter designation: ");
         String skills = ConsoleUtil.input("Enter skills (semicolon separated): ");
         String supervisorId = role.equals("MANAGER") ? "" : ConsoleUtil.input("Enter Manager ID (for employees): ");
         

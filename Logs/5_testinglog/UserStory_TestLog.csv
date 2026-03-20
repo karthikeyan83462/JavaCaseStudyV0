@@ -1,0 +1,29 @@
+Test Case ID,Module,Test Scenario,Expected Result,Actual Result,Status
+TC_US001,Add New Employee,Verify admin can add a new employee with valid details,Employee should be added successfully,Worked as expected,Pass
+TC_US002,View All Employees,Verify admin can view all employees,Employee list should be displayed,Worked as expected,Pass
+TC_US003,View Employee Details,Verify admin can view employee details,Employee details should be displayed correctly,Worked as expected,Pass
+TC_US004,Edit Employee,Verify admin can edit employee details,Updated employee details should be saved,Worked as expected,Pass
+TC_US005,Delete Employee,Verify admin can delete an employee,Employee should be removed or marked inactive,Worked as expected,Pass
+TC_US006,Search Employees by Skill,Verify user can search employees by skill,Matching employees should be displayed,Worked as expected,Pass
+TC_US007,View Team Structure,Verify user can view team structure,Team hierarchy should be displayed,Worked as expected,Pass
+TC_US008,Create New Project,Verify admin can create a new project,Project should be created successfully,Worked as expected,Pass
+TC_US009,View All Projects,Verify user can view all projects,Project list should be displayed,Worked as expected,Pass
+TC_US010,View Project Details,Verify user can view project details,Project details should be displayed,Worked as expected,Pass
+TC_US011,Assign Employee to Project,Verify admin can assign employee to project,Employee should be assigned,Worked as expected,Pass
+TC_US012,Update Project Status,Verify admin can update project status,Project status should update,Worked as expected,Pass
+TC_US013,Resource Availability,Verify user can view resource availability,Resource availability should be displayed,Worked as expected,Pass
+TC_US014,Mark Attendance,Verify employee can mark attendance,Attendance should be marked,Worked as expected,Pass
+TC_US015,View My Attendance,Verify employee can view own attendance,Attendance records should be shown,Worked as expected,Pass
+TC_US016,View Employee Attendance,Verify admin can view employee attendance,Employee attendance should display,Worked as expected,Pass
+TC_US017,Apply for Leave,Verify employee can apply for leave,Leave request should be submitted,Worked as expected,Pass
+TC_US018,View My Leave Requests,Verify employee can view leave requests,Leave requests should display,Worked as expected,Pass
+TC_US019,View Pending Leave Requests,Verify manager can view pending leave requests,Pending requests should display,Worked as expected,Pass
+TC_US020,Approve/Reject Leave,Verify manager can approve or reject leave,Leave status should update,Worked as expected,Pass
+TC_US021,Add Performance Review,Verify manager can add performance review,Review should be saved,Worked as expected,Pass
+TC_US022,View My Reviews,Verify employee can view own reviews,Reviews should display,Worked as expected,Pass
+TC_US023,View Employee Reviews,Verify manager can view employee reviews,Employee reviews should display,Worked as expected,Pass
+TC_US024,Employee Attendance Report,Verify admin can generate attendance report,Attendance report should generate,Worked as expected,Pass
+TC_US025,Leave Report,Verify admin can generate leave report,Leave report should generate,Worked as expected,Pass
+TC_US026,Project Allocation Report,Verify admin can generate project allocation report,Project allocation report should generate,Worked as expected,Pass
+TC_US027,Employee Summary Report,Verify admin can generate employee summary report,Employee summary report should generate,Worked as expected,Pass
+TC_US028,My Profile,Verify employee can view profile,Profile details should display,Worked as expected,Pass

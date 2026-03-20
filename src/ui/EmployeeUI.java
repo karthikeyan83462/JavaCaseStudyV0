@@ -120,7 +120,7 @@ public class EmployeeUI {
         ConsoleUtil.printHeader("EDIT EMPLOYEE");
         String empId = ConsoleUtil.input("Enter employee ID: ");
         User emp = EmployeeService.getEmployeeById(empId);
-
+        
         if (emp == null) {
             ConsoleUtil.printError("Employee not found!");
         } else {

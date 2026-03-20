@@ -1,3 +1,6 @@
 ADM001|admin|admin123|ADMIN
 EMP002|karthikeyan|000000|MANAGER|KarthikeyanA|karthikeyan@gmail.com|9043938346|IT|Emp|Java, Python||
 EMP003|nithis|password123|EMPLOYEE|Nithish|nithis@gmail.com|9999999999|IT|Noob|Java||19-03-2026
+MGR004|mukundan|000000|MANAGER|Mukundan A A|mukundan@gmail.com|0000000000|IT|Senior manager|Java, AI, Project management||20-03-2026
+EMP005|Vijay|000000|EMPLOYEE|Vijay|v@|8888888888|IT|Noob|Nothing|MGR004|20-03-2026
+MGR006|kart|000000|MANAGER|asdf|asdf|134987932|asf||adsf||20-03-2026
