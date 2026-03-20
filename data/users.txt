@@ -1,3 +1,3 @@
 ADM001|admin|admin123|ADMIN
-EMP002|karthikeyan|000000|EMPLOYEE|KarthikeyanA|karthikeyan@gmail.com|9043938346|IT|Emp|Java, Python||
+EMP002|karthikeyan|000000|MANAGER|KarthikeyanA|karthikeyan@gmail.com|9043938346|IT|Emp|Java, Python||
 EMP003|nithis|password123|EMPLOYEE|Nithish|nithis@gmail.com|9999999999|IT|Noob|Java||19-03-2026

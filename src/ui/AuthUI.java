@@ -40,7 +40,7 @@ public class AuthUI {
         String department = ConsoleUtil.input("Enter department: ");
         String designation = ConsoleUtil.input("Enter designation: ");
         String skills = ConsoleUtil.input("Enter skills (semicolon separated): ");
-        String supervisorId = role.equals("MANAGER") ? "" : ConsoleUtil.input("Enter supervisor ID (for employees): ");
+        String supervisorId = role.equals("MANAGER") ? "" : ConsoleUtil.input("Enter Manager ID (for employees): ");
         
         if (AuthService.registerWithDetails(username, password, role, name, email, phone, department, designation, skills, supervisorId)) {
             ConsoleUtil.printSuccess("Registration successful! You can now login.");
