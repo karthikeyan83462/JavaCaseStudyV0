@@ -14,7 +14,7 @@ public class EmployeeService {
         String joiningDate = DateUtil.getCurrentDate();
         String username = email.split("@")[0];
         
-        User newUser = new User(empId, username, "password123", "EMPLOYEE", name, email, phone,
+        User newUser = new User(empId, username, "Pass@123", "EMPLOYEE", name, email, phone,
                                department, designation, skills, supervisorId, joiningDate);
         StorageManager.writeToFile(StorageManager.getFilePath("users"), newUser.toString());
         return true;
