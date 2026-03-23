@@ -10,7 +10,7 @@ public class AuthUI {
     public static void login() {
         ConsoleUtil.printHeader("LOGIN");
 
-        String username = ConsoleUtil.inputRequired("Enter username: ");
+        String username = ConsoleUtil.inputUsername("Enter username: ");
         String password = ConsoleUtil.inputStrongPassword("Enter password: ");
 
         User user = AuthService.login(username, password);
@@ -26,7 +26,7 @@ public class AuthUI {
     public static void register() {
         ConsoleUtil.printHeader("REGISTER");
 
-        String username = ConsoleUtil.inputRequired("Enter username: ");
+        String username = ConsoleUtil.inputUsername("Enter username: ");
         String password = ConsoleUtil.inputStrongPasswordWithConfirm();
 
         int roleChoice = ConsoleUtil.inputRole();

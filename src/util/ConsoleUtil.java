@@ -237,6 +237,41 @@ public class ConsoleUtil {
         return input;
     }
 
+    public static String inputUsername(String message) {
+        while (true) {
+            String username = ConsoleUtil.input(message);
+
+            if (username.isEmpty()) {
+                ConsoleUtil.printError("Username cannot be empty.");
+                continue;
+            }
+
+            boolean hasLetter = false;
+            boolean hasSpace = false;
+
+            for (char ch : username.toCharArray()) {
+                if (Character.isLetter(ch)) {
+                    hasLetter = true;
+                } else if (Character.isWhitespace(ch)) {
+                    hasSpace = true;
+                    break;
+                }
+            }
+
+            if (hasSpace) {
+                ConsoleUtil.printError("Username must not contain spaces.");
+                continue;
+            }
+
+            if (!hasLetter) {
+                ConsoleUtil.printError("Username cannot contain only numbers.");
+                continue;
+            }
+
+            return username;
+        }
+    }
+
     public static String inputEmail(String message) {
         String email;
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
