@@ -9,7 +9,6 @@ import java.util.List;
 
 public class AttendanceService {
 
-    // ✅ Mark attendance only once per day
     public static boolean markAttendance(String empId, String status) {
         String date = DateUtil.getCurrentDate();
         String filePath = StorageManager.getFilePath("attendance");
@@ -24,7 +23,6 @@ public class AttendanceService {
         return true;
     }
 
-    // ✅ Helper method to prevent duplicate attendance
     private static boolean isAttendanceAlreadyMarked(String empId, String date) {
         List<String> lines = StorageManager.readFile(
                 StorageManager.getFilePath("attendance")
