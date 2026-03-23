@@ -77,7 +77,7 @@ public class AttendanceUI {
         if (AttendanceService.markAttendance(user.getUserId(), status)) {
             ConsoleUtil.printSuccess("Attendance marked as " + status);
         } else {
-            ConsoleUtil.printError("Failed to mark attendance!");
+            ConsoleUtil.printError("Attendance already marked for today!");
         }
         ConsoleUtil.pause();
     }
