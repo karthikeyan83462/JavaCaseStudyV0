@@ -86,16 +86,14 @@ public class DateUtil {
     int ey = Integer.parseInt(e[2]);
 
     // Compare years
-    if (ey >= sy) return true;
-    if (ey < sy) return false;
+    if (ey>sy) return true;
+    else if (ey==sy){
+        if (em>sm) return true;
+        else if (em==sm){
+            if (ed>sd) return true;
 
-    // Same year → compare month
-    if (em >= sm) return true;
-    if (em < sm) return false;
-
-    // Same month → compare day
-    if (ed >= sd) return true;  // <-- ALLOWS SAME DATE
-
+        }
+    }
     return false;
 
     }
