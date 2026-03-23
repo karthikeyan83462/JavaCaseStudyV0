@@ -194,7 +194,6 @@ public class ConsoleUtil {
                 }
             }
 
-            // ✅ First-time validation
             if (password.length() < 8) {
                 ConsoleUtil.printError("Password must be at least 8 characters.\n");
                 continue;
@@ -216,7 +215,6 @@ public class ConsoleUtil {
                 continue;
             }
 
-            // ✅ Ask for confirmation ONLY after password is valid
             String confirmPassword = ConsoleUtil.input("Confirm password: ");
 
             if (!password.equals(confirmPassword)) {
