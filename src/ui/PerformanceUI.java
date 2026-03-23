@@ -47,7 +47,7 @@ public class PerformanceUI {
 
     private static void addReview(User user) {
         ConsoleUtil.printHeader("ADD PERFORMANCE REVIEW");
-        String empId = ConsoleUtil.input("Enter employee ID: ");
+        String empId = ConsoleUtil.inputRequired("Enter employee ID: ");
         
         User emp = EmployeeService.getEmployeeById(empId);
         if (emp == null) {
@@ -87,7 +87,7 @@ public class PerformanceUI {
 
     private static void viewEmployeeReviews() {
         ConsoleUtil.printHeader("VIEW EMPLOYEE REVIEWS");
-        String empId = ConsoleUtil.input("Enter employee ID: ");
+        String empId = ConsoleUtil.inputRequired("Enter employee ID: ");
         List<PerformanceReview> reviews = PerformanceService.getEmployeeReviews(empId);
 
         if (reviews.isEmpty()) {

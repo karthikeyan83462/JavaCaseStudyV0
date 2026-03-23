@@ -4,6 +4,27 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ConsoleUtil {
+    // ---------- PREDEFINED VALUES ----------
+
+    private static final String[] DEPARTMENTS = {
+            "Engineering",
+            "Human Resources",
+            "Finance",
+            "Sales",
+            "Marketing",
+            "Operations",
+            "IT Support"
+    };
+
+    private static final String[] DESIGNATIONS = {
+            "Software Engineer",
+            "Senior Engineer",
+            "Team Lead",
+            "Analyst",
+            "Executive",
+            "Intern"
+    };
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void clearScreen() {
@@ -44,15 +65,15 @@ public class ConsoleUtil {
     }
 
     public static void printSuccess(String message) {
-        System.out.println("\n✓ " + message);
+        System.out.println("\n " + message);
     }
 
     public static void printError(String message) {
-        System.out.println("\n✗ " + message);
+        System.out.println("\n " + message);
     }
 
     public static void printInfo(String message) {
-        System.out.println("\nℹ " + message);
+        System.out.println("\n " + message);
     }
 
     public static void printLine(String message) {
@@ -80,7 +101,45 @@ public class ConsoleUtil {
                             "- Contain uppercase and lowercase letters\n" +
                             "- Contain a number\n" +
                             "- Contain a special character (@#$%!^&*)\n" +
-                            "- Not contain spaces");
+                            "- Not contain spaces\n");
+        }
+    }
+
+    public static String inputDepartment(String prompt) {
+        int choice;
+
+        while (true) {
+            System.out.println("\n" + prompt);
+            for (int i = 0; i < DEPARTMENTS.length; i++) {
+                System.out.println((i + 1) + ". " + DEPARTMENTS[i]);
+            }
+
+            choice = inputInt("Enter choice: ");
+
+            if (choice >= 1 && choice <= DEPARTMENTS.length) {
+                return DEPARTMENTS[choice - 1];
+            }
+
+            printError("Invalid department choice. Please select a valid number.");
+        }
+    }
+
+    public static String inputDesignation(String prompt) {
+        int choice;
+
+        while (true) {
+            System.out.println("\n" + prompt);
+            for (int i = 0; i < DESIGNATIONS.length; i++) {
+                System.out.println((i + 1) + ". " + DESIGNATIONS[i]);
+            }
+
+            choice = inputInt("Enter choice: ");
+
+            if (choice >= 1 && choice <= DESIGNATIONS.length) {
+                return DESIGNATIONS[choice - 1];
+            }
+
+            printError("Invalid designation choice. Please select a valid number.");
         }
     }
 

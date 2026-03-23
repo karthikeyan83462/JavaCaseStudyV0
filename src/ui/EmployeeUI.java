@@ -61,12 +61,12 @@ public class EmployeeUI {
 
     private static void addEmployee() {
         ConsoleUtil.printHeader("ADD NEW EMPLOYEE");
-        String name = ConsoleUtil.input("Enter name: ");
-        String email = ConsoleUtil.input("Enter email: ");
-        String phone = ConsoleUtil.input("Enter phone: ");
-        String department = ConsoleUtil.input("Enter department: ");
-        String designation = ConsoleUtil.input("Enter designation: ");
-        String skills = ConsoleUtil.input("Enter skills (comma separated): ");
+        String name = ConsoleUtil.inputRequired("Enter name: ");
+        String email = ConsoleUtil.inputEmail("Enter email: ");
+        String phone = ConsoleUtil.inputPhone("Enter phone: ");
+        String department = ConsoleUtil.inputDepartment("Enter Department: ");
+        String designation = ConsoleUtil.inputDesignation("Enter Designation: ");
+        String skills = ConsoleUtil.inputRequired("Enter skills (comma separated): ");
         String supervisorId = ConsoleUtil.input("Enter supervisor ID (or leave blank): ");
 
         if (EmployeeService.addEmployee(name, email, phone, department, designation, skills, supervisorId)) {
@@ -96,7 +96,7 @@ public class EmployeeUI {
 
     private static void viewEmployeeDetails() {
         ConsoleUtil.printHeader("VIEW EMPLOYEE DETAILS");
-        String empId = ConsoleUtil.input("Enter employee ID: ");
+        String empId = ConsoleUtil.inputRequired("Enter employee ID: ");
         User emp = EmployeeService.getEmployeeById(empId);
 
         if (emp == null) {
@@ -118,18 +118,18 @@ public class EmployeeUI {
 
     private static void editEmployee() {
         ConsoleUtil.printHeader("EDIT EMPLOYEE");
-        String empId = ConsoleUtil.input("Enter employee ID: ");
+        String empId = ConsoleUtil.inputRequired("Enter employee ID: ");
         User emp = EmployeeService.getEmployeeById(empId);
         
         if (emp == null) {
             ConsoleUtil.printError("Employee not found!");
         } else {
-            String name = ConsoleUtil.input("Enter new name (or press Enter to skip): ");
-            String email = ConsoleUtil.input("Enter new email (or press Enter to skip): ");
-            String phone = ConsoleUtil.input("Enter new phone (or press Enter to skip): ");
-            String department = ConsoleUtil.input("Enter new department (or press Enter to skip): ");
-            String designation = ConsoleUtil.input("Enter new designation (or press Enter to skip): ");
-            String skills = ConsoleUtil.input("Enter new skills (or press Enter to skip): ");
+            String name = ConsoleUtil.inputRequired("Enter new name (or press Enter to skip): ");
+            String email = ConsoleUtil.inputEmail("Enter new email (or press Enter to skip): ");
+            String phone = ConsoleUtil.inputPhone("Enter new phone (or press Enter to skip): ");
+            String department = ConsoleUtil.inputDepartment("Enter new department (or press Enter to skip): ");
+            String designation = ConsoleUtil.inputDesignation("Enter new designation (or press Enter to skip): ");
+            String skills = ConsoleUtil.inputRequired("Enter new skills (or press Enter to skip): ");
 
             if (!name.isEmpty()) emp.setName(name);
             if (!email.isEmpty()) emp.setEmail(email);
@@ -149,7 +149,7 @@ public class EmployeeUI {
 
     private static void deleteEmployee() {
         ConsoleUtil.printHeader("DELETE EMPLOYEE");
-        String empId = ConsoleUtil.input("Enter employee ID: ");
+        String empId = ConsoleUtil.inputRequired("Enter employee ID: ");
 
         if (EmployeeService.deleteEmployee(empId)) {
             ConsoleUtil.printSuccess("Employee deleted successfully!");
@@ -161,7 +161,7 @@ public class EmployeeUI {
 
     private static void searchBySkill() {
         ConsoleUtil.printHeader("SEARCH EMPLOYEES BY SKILL");
-        String skill = ConsoleUtil.input("Enter skill: ");
+        String skill = ConsoleUtil.inputRequired("Enter skill: ");
         List<User> employees = EmployeeService.searchBySkill(skill);
 
         if (employees.isEmpty()) {

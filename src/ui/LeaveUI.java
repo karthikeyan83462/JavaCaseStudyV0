@@ -58,9 +58,9 @@ public class LeaveUI {
 
     private static void applyLeave(User user) {
         ConsoleUtil.printHeader("APPLY FOR LEAVE");
-        String startDate = ConsoleUtil.input("Enter start date (dd-MM-yyyy): ");
-        String endDate = ConsoleUtil.input("Enter end date (dd-MM-yyyy): ");
-        String reason = ConsoleUtil.input("Enter reason for leave: ");
+        String startDate = ConsoleUtil.inputRequired("Enter start date (dd-MM-yyyy): ");
+        String endDate = ConsoleUtil.inputRequired("Enter end date (dd-MM-yyyy): ");
+        String reason = ConsoleUtil.inputRequired("Enter reason for leave: ");
 
         if (LeaveService.applyLeave(user.getUserId(), startDate, endDate, reason)) {
             ConsoleUtil.printSuccess("Leave application submitted successfully!");
@@ -106,7 +106,7 @@ public class LeaveUI {
 
     private static void approveRejectLeave(User user) {
         ConsoleUtil.printHeader("APPROVE/REJECT LEAVE REQUEST");
-        String leaveId = ConsoleUtil.input("Enter leave ID: ");
+        String leaveId = ConsoleUtil.inputRequired("Enter leave ID: ");
         
         Leave leave = LeaveService.getLeaveById(leaveId);
         if (leave == null) {

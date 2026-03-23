@@ -36,7 +36,7 @@ public class StorageManager {
     private static void addDefaultAdmin() {
         List<String> lines = readFile(USERS_FILE);
         if (lines.isEmpty()) {
-            writeToFile(USERS_FILE, "ADM001|admin|admin123|ADMIN");
+            writeToFile(USERS_FILE, "ADM001|admin|Admin@123|ADMIN");
         }
     }
 

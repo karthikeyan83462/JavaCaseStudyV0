@@ -50,7 +50,7 @@ public class ProfileUI {
 
     private static void editProfile(User emp) {
         ConsoleUtil.printHeader("EDIT PROFILE");
-        String phone = ConsoleUtil.input("Enter new phone (or press Enter to skip): ");
+        String phone = ConsoleUtil.inputPhone("Enter new phone (or press Enter to skip): ");
         String skills = ConsoleUtil.input("Enter new skills (or press Enter to skip): ");
 
         if (!phone.isEmpty()) {

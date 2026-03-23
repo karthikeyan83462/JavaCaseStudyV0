@@ -59,11 +59,11 @@ public class ProjectUI {
 
     private static void createProject() {
         ConsoleUtil.printHeader("CREATE NEW PROJECT");
-        String name = ConsoleUtil.input("Enter project name: ");
-        String description = ConsoleUtil.input("Enter description: ");
-        String startDate = ConsoleUtil.input("Enter start date (dd-MM-yyyy): ");
-        String endDate = ConsoleUtil.input("Enter end date (dd-MM-yyyy): ");
-        String skills = ConsoleUtil.input("Enter required skills (semicolon separated): ");
+        String name = ConsoleUtil.inputRequired("Enter project name: ");
+        String description = ConsoleUtil.inputRequired("Enter description: ");
+        String startDate = ConsoleUtil.inputRequired("Enter start date (dd-MM-yyyy): ");
+        String endDate = ConsoleUtil.inputRequired("Enter end date (dd-MM-yyyy): ");
+        String skills = ConsoleUtil.inputRequired("Enter required skills (semicolon separated): ");
 
         if (ProjectService.createProject(name, description, startDate, endDate, skills)) {
             ConsoleUtil.printSuccess("Project created successfully!");
@@ -92,7 +92,7 @@ public class ProjectUI {
 
     private static void viewProjectDetails() {
         ConsoleUtil.printHeader("VIEW PROJECT DETAILS");
-        String projectId = ConsoleUtil.input("Enter project ID: ");
+        String projectId = ConsoleUtil.inputRequired("Enter project ID: ");
         Project proj = ProjectService.getProjectById(projectId);
 
         if (proj == null) {
