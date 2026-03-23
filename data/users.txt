@@ -1,3 +1,4 @@
-ADM001|admin|Admin@123|ADMIN
-EMP002|Karthikeyan|Karthikeyan@123|EMPLOYEE|Karthikeyan|karthi@gmail.com|0000000000|Engineering|Software Engineer|Java|MNG001|23-03-2026
-EMP003|karthikeyan|Karthi@123|EMPLOYEE|Karthikeyan|Kart@gmail|0000000000|Engineering|Senior Engineer|Java|Moi990|23-03-2026
+1ADM001|admin|Admin@123|ADMIN
+MGR002|Admin123|Admin@1234|MANAGER|admin|admin@gmail.com|0987654323|Operations||java;|Default||23-03-2026
+EMP003|kavin|Pass@123|EMPLOYEE|kavin|kavin@gmail.com|1234567798|Marketing|Intern|Java;|MGR002|MGR002|23-03-2026
+MGR004|Admin2000|Admin@2000|MANAGER|Admin|Admin@gmail.com|0987654576|Engineering||Java|Default||23-03-2026

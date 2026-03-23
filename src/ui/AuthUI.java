@@ -3,6 +3,7 @@ package ui;
 import model.User;
 import service.AuthService;
 import util.ConsoleUtil;
+import util.DateUtil;
 
 public class AuthUI {
 
@@ -27,12 +28,14 @@ public class AuthUI {
         ConsoleUtil.printHeader("REGISTER");
 
         String username = ConsoleUtil.inputUsername("Enter username: ");
+        while (!DateUtil.isValidUsername(username)) username = ConsoleUtil.inputUsername("Enter valid username: ");
         String password = ConsoleUtil.inputStrongPasswordWithConfirm();
 
         int roleChoice = ConsoleUtil.inputRole();
         String role = roleChoice == 2 ? "MANAGER" : "EMPLOYEE";
 
         String name = ConsoleUtil.inputRequired("Enter full name: ");
+        while (!DateUtil.isAlphabet(name)) name = ConsoleUtil.inputRequired("Enter valid full name: ");
         String email = ConsoleUtil.inputEmail("Enter email: ");
         String phone = ConsoleUtil.inputPhone("Enter phone: ");
         String department = ConsoleUtil.inputDepartment("Enter department: ");

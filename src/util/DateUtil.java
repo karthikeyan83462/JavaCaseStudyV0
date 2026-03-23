@@ -97,7 +97,59 @@ public class DateUtil {
     return false;
 
     }
+    public static boolean isValidUsername(String username) {
+        if (username == null || username.length() < 3 || username.length() > 30) {
+            return false;
+        }
 
+        char firstChar = username.charAt(0);
+        char lastChar = username.charAt(username.length() - 1);
+
+        if (!isAlphanumeric(firstChar) || !isAlphanumeric(lastChar)) {
+            return false;
+        }
+
+        boolean previousWasSpecial = false;
+
+        for (int i = 0; i < username.length(); i++) {
+            char c = username.charAt(i);
+
+            if (isAlphanumeric(c)) {
+                previousWasSpecial = false;
+            } else if (isAllowedSpecial(c)) {
+                if (previousWasSpecial) {
+                    return false;
+                }
+                previousWasSpecial = true;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean isAlphanumeric(char c) {
+        return (c >= 'a' && c <= 'z') ||
+                (c >= 'A' && c <= 'Z') ||
+                (c >= '0' && c <= '9');
+    }
+
+    private static boolean isAllowedSpecial(char c) {
+        return c == '_' || c == '-' || c == '.';
+    }
+    public static boolean isAlphabet(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+
+        for (char c : str.toCharArray()) {
+            if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
+                return false;
+            }
+        }
+        return true;
+    }
     private static boolean isNumber(String s) {
         if (s == null || s.isEmpty()) return false;
 

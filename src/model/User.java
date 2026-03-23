@@ -15,18 +15,19 @@ public class User {
     private String department;
     private String designation;
     private String skills;
+    private String createdBy;
     private String supervisorId;
     private String joiningDate;
 
     // Constructor for ADMIN/MANAGER users (basic auth only)
     public User(String userId, String username, String password, String role) {
-        this(userId, username, password, role, "", "", "", "", "", "", "", "");
+        this(userId, username, password, role, "", "", "", "", "", "", "Default","", "");
     }
 
     // Constructor for EMPLOYEE users (with full employee details)
     public User(String userId, String username, String password, String role, String name,
                 String email, String phone, String department, String designation,
-                String skills, String supervisorId, String joiningDate) {
+                String skills,String Cre, String supervisorId, String joiningDate) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -39,6 +40,7 @@ public class User {
         this.skills = skills;
         this.supervisorId = supervisorId;
         this.joiningDate = joiningDate;
+        this.createdBy=Cre;
     }
 
     public String getUserId() { return userId; }
@@ -53,6 +55,7 @@ public class User {
     public String getSkills() { return skills; }
     public String getSupervisorId() { return supervisorId; }
     public String getJoiningDate() { return joiningDate; }
+    public String getCreatedBy() { return createdBy; }
 
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }
@@ -61,7 +64,7 @@ public class User {
     public void setDesignation(String designation) { this.designation = designation; }
     public void setSkills(String skills) { this.skills = skills; }
     public void setSupervisorId(String supervisorId) { this.supervisorId = supervisorId; }
-
+    public void setCreatedBy(String cre) { this.createdBy = cre; }
     public List<String> getSkillsList() {
         return skills != null && !skills.isEmpty() ? Arrays.asList(skills.split(";")) : new ArrayList<>();
     }
@@ -70,7 +73,7 @@ public class User {
     public String toString() {
         return userId + "|" + username + "|" + password + "|" + role + "|" + name + "|" +
                email + "|" + phone + "|" + department + "|" + designation + "|" +
-               skills + "|" + supervisorId + "|" + joiningDate;
+               skills + "|" + createdBy + "|" + supervisorId + "|" + joiningDate;
     }
 
     public static User fromString(String line) {
@@ -81,7 +84,7 @@ public class User {
         if (parts.length >= 4) {
             if (parts.length >= 12) {
                 return new User(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
-                               parts[6], parts[7], parts[8], parts[9], parts[10], parts[11]);
+                               parts[6], parts[7], parts[8], parts[9], parts[10], parts[11], parts[12]);
             } else {
                 return new User(parts[0], parts[1], parts[2], parts[3]);
             }

@@ -9,13 +9,13 @@ import java.util.List;
 public class EmployeeService {
 
     public static boolean addEmployee(String name, String email, String phone, String department,
-                                     String designation, String skills, String supervisorId) {
+                                     String designation, String skills,String crea, String supervisorId) {
         String empId = DateUtil.generateId("EMP");
         String joiningDate = DateUtil.getCurrentDate();
         String username = email.split("@")[0];
         
         User newUser = new User(empId, username, "Pass@123", "EMPLOYEE", name, email, phone,
-                               department, designation, skills, supervisorId, joiningDate);
+                               department, designation, skills, crea, supervisorId, joiningDate);
         StorageManager.writeToFile(StorageManager.getFilePath("users"), newUser.toString());
         return true;
     }
@@ -64,14 +64,14 @@ public class EmployeeService {
         return found;
     }
 
-    public static boolean deleteEmployee(String empId) {
+    public static boolean deleteEmployee(String empId, String Crea) {
         List<String> lines = StorageManager.readFile(StorageManager.getFilePath("users"));
         List<String> updatedLines = new ArrayList<>();
         boolean found = false;
         
         for (String line : lines) {
             User user = User.fromString(line);
-            if (user != null && user.getUserId().equals(empId)) {
+            if (user != null && user.getUserId().equals(empId) && !user.getCreatedBy().equals("Default") && user.getCreatedBy().equals(Crea) && !empId.equals(Crea)) {
                 found = true;
             } else {
                 updatedLines.add(line);

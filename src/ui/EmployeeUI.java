@@ -3,6 +3,8 @@ package ui;
 import model.User;
 import service.EmployeeService;
 import util.ConsoleUtil;
+import util.DateUtil;
+
 import java.util.List;
 
 public class EmployeeUI {
@@ -30,7 +32,7 @@ public class EmployeeUI {
 
             switch (choice) {
                 case 1:
-                    addEmployee();
+                    addEmployee(user);
                     break;
                 case 2:
                     viewAllEmployees();
@@ -42,7 +44,7 @@ public class EmployeeUI {
                     editEmployee();
                     break;
                 case 5:
-                    deleteEmployee();
+                    deleteEmployee(user);
                     break;
                 case 6:
                     searchBySkill();
@@ -59,17 +61,18 @@ public class EmployeeUI {
         }
     }
 
-    private static void addEmployee() {
+    private static void addEmployee(User U) {
         ConsoleUtil.printHeader("ADD NEW EMPLOYEE");
         String name = ConsoleUtil.inputRequired("Enter name: ");
+        while (!DateUtil.isAlphabet(name)) name = ConsoleUtil.inputRequired("Enter valid name: ");
         String email = ConsoleUtil.inputEmail("Enter email: ");
         String phone = ConsoleUtil.inputPhone("Enter phone: ");
         String department = ConsoleUtil.inputDepartment("Enter Department: ");
         String designation = ConsoleUtil.inputDesignation("Enter Designation: ");
         String skills = ConsoleUtil.inputRequired("Enter skills (comma separated): ");
-        String supervisorId = ConsoleUtil.input("Enter supervisor ID (or leave blank): ");
+        String supervisorId = U.getUserId();
 
-        if (EmployeeService.addEmployee(name, email, phone, department, designation, skills, supervisorId)) {
+        if (EmployeeService.addEmployee(name, email, phone, department, designation, skills,U.getUserId(), supervisorId)) {
             ConsoleUtil.printSuccess("Employee added successfully!");
         } else {
             ConsoleUtil.printError("Failed to add employee!");
@@ -147,11 +150,11 @@ public class EmployeeUI {
         ConsoleUtil.pause();
     }
 
-    private static void deleteEmployee() {
+    private static void deleteEmployee(User u) {
         ConsoleUtil.printHeader("DELETE EMPLOYEE");
         String empId = ConsoleUtil.inputRequired("Enter employee ID: ");
 
-        if (EmployeeService.deleteEmployee(empId)) {
+        if (EmployeeService.deleteEmployee(empId, u.getUserId())) {
             ConsoleUtil.printSuccess("Employee deleted successfully!");
         } else {
             ConsoleUtil.printError("Failed to delete employee!");

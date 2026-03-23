@@ -55,7 +55,7 @@ public class AuthService {
         }
         String userId = DateUtil.generateId(prefix);
         User newUser = new User(userId, username, password, role, name, email, phone, 
-                               department, designation, skills, supervisorId, joiningDate);
+                               department, designation, skills,"Default", supervisorId, joiningDate);
         StorageManager.writeToFile(StorageManager.getFilePath("users"), newUser.toString());
         return true;
     }
