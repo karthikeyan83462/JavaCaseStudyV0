@@ -11,7 +11,7 @@ public class AuthUI {
         ConsoleUtil.printHeader("LOGIN");
 
         String username = ConsoleUtil.inputRequired("Enter username: ");
-        String password = ConsoleUtil.inputRequired("Enter password: ");
+        String password = ConsoleUtil.inputStrongPassword("Enter password: ");
 
         User user = AuthService.login(username, password);
         if (user != null) {
@@ -27,7 +27,7 @@ public class AuthUI {
         ConsoleUtil.printHeader("REGISTER");
 
         String username = ConsoleUtil.inputMinLength("Enter username: ", 4);
-        String password = ConsoleUtil.inputMinLength("Enter password: ", 6);
+        String password = ConsoleUtil.inputStrongPassword("Enter password: ");
 
         int roleChoice = ConsoleUtil.inputRole();
         String role = roleChoice == 2 ? "MANAGER" : "EMPLOYEE";

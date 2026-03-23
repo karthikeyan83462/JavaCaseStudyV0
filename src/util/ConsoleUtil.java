@@ -59,7 +59,30 @@ public class ConsoleUtil {
         System.out.println(message);
     }
 
-        // ---------- VALIDATION HELPERS ----------
+    // ---------- VALIDATION HELPERS ----------
+
+    public static String inputStrongPassword(String message) {
+        while (true) {
+            String password = ConsoleUtil.input(message);
+
+            boolean hasUpper = password.matches(".*[A-Z].*");
+            boolean hasLower = password.matches(".*[a-z].*");
+            boolean hasDigit = password.matches(".*\\d.*");
+            boolean hasSpecial = password.matches(".*[@#$%!^&*].*");
+
+            if (password.length() >= 8 && hasUpper && hasLower && hasDigit && hasSpecial && !password.contains(" ")) {
+                return password;
+            }
+
+            ConsoleUtil.printError(
+                    "Password must:\n" +
+                            "- Be at least 8 characters\n" +
+                            "- Contain uppercase and lowercase letters\n" +
+                            "- Contain a number\n" +
+                            "- Contain a special character (@#$%!^&*)\n" +
+                            "- Not contain spaces");
+        }
+    }
 
     public static String inputRequired(String message) {
         String input;
