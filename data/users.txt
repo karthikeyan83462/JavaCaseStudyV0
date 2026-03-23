@@ -1,2 +1,3 @@
 ADM001|admin|Admin@123|ADMIN
 EMP002|Karthikeyan|Karthikeyan@123|EMPLOYEE|Karthikeyan|karthi@gmail.com|0000000000|Engineering|Software Engineer|Java|MNG001|23-03-2026
+EMP003|karthikeyan|Karthi@123|EMPLOYEE|Karthikeyan|Kart@gmail|0000000000|Engineering|Senior Engineer|Java|Moi990|23-03-2026

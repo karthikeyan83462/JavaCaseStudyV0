@@ -264,7 +264,7 @@ public class ConsoleUtil {
             }
 
             if (!hasLetter) {
-                ConsoleUtil.printError("Username cannot contain only numbers.");
+                ConsoleUtil.printError("Username cannot contain only numbers or special characters.");
                 continue;
             }
 
