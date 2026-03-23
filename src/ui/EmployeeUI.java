@@ -126,7 +126,7 @@ public class EmployeeUI {
         } else {
             String name = ConsoleUtil.inputRequired("Enter new name (or press Enter to skip): ");
             String email = ConsoleUtil.inputEmail("Enter new email (or press Enter to skip): ");
-            String phone = ConsoleUtil.inputPhone("Enter new phone (or press Enter to skip): ");
+            String phone = ConsoleUtil.input("Enter new phone (or press Enter to skip): ");
             String department = ConsoleUtil.inputDepartment("Enter new department (or press Enter to skip): ");
             String designation = ConsoleUtil.inputDesignation("Enter new designation (or press Enter to skip): ");
             String skills = ConsoleUtil.inputRequired("Enter new skills (or press Enter to skip): ");

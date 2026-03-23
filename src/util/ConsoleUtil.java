@@ -86,12 +86,27 @@ public class ConsoleUtil {
         while (true) {
             String password = ConsoleUtil.input(message);
 
-            boolean hasUpper = password.matches(".*[A-Z].*");
-            boolean hasLower = password.matches(".*[a-z].*");
-            boolean hasDigit = password.matches(".*\\d.*");
-            boolean hasSpecial = password.matches(".*[@#$%!^&*].*");
+            boolean hasUpper = false;
+            boolean hasLower = false;
+            boolean hasDigit = false;
+            boolean hasSpecial = false;
 
-            if (password.length() >= 8 && hasUpper && hasLower && hasDigit && hasSpecial && !password.contains(" ")) {
+            for (char ch : password.toCharArray()) {
+                if (Character.isUpperCase(ch)) {
+                    hasUpper = true;
+                } else if (Character.isLowerCase(ch)) {
+                    hasLower = true;
+                } else if (Character.isDigit(ch)) {
+                    hasDigit = true;
+                } else if ("@#$%!^&*".indexOf(ch) >= 0) {
+                    hasSpecial = true;
+                } else if (Character.isWhitespace(ch)) {
+                    hasUpper = hasLower = hasDigit = hasSpecial = false;
+                    break; // spaces not allowed
+                }
+            }
+
+            if (password.length() >= 8 && hasUpper && hasLower && hasDigit && hasSpecial) {
                 return password;
             }
 
@@ -152,6 +167,65 @@ public class ConsoleUtil {
             }
         } while (input.isEmpty());
         return input;
+    }
+
+    public static String inputStrongPasswordWithConfirm() {
+        while (true) {
+            String password = ConsoleUtil.input("Enter password: ");
+
+            boolean hasUpper = false;
+            boolean hasLower = false;
+            boolean hasDigit = false;
+            boolean hasSpecial = false;
+            boolean hasSpace = false;
+
+            for (char ch : password.toCharArray()) {
+                if (Character.isUpperCase(ch)) {
+                    hasUpper = true;
+                } else if (Character.isLowerCase(ch)) {
+                    hasLower = true;
+                } else if (Character.isDigit(ch)) {
+                    hasDigit = true;
+                } else if ("@#$%!^&*".indexOf(ch) >= 0) {
+                    hasSpecial = true;
+                } else if (Character.isWhitespace(ch)) {
+                    hasSpace = true;
+                    break;
+                }
+            }
+
+            // ✅ First-time validation
+            if (password.length() < 8) {
+                ConsoleUtil.printError("Password must be at least 8 characters.\n");
+                continue;
+            }
+            if (hasSpace) {
+                ConsoleUtil.printError("Password must not contain spaces.");
+                continue;
+            }
+            if (!hasUpper || !hasLower) {
+                ConsoleUtil.printError("Password must contain uppercase and lowercase letters.");
+                continue;
+            }
+            if (!hasDigit) {
+                ConsoleUtil.printError("Password must contain at least one number.");
+                continue;
+            }
+            if (!hasSpecial) {
+                ConsoleUtil.printError("Password must contain a special character (@#$%!^&*).");
+                continue;
+            }
+
+            // ✅ Ask for confirmation ONLY after password is valid
+            String confirmPassword = ConsoleUtil.input("Confirm password: ");
+
+            if (!password.equals(confirmPassword)) {
+                ConsoleUtil.printError("Passwords do not match.");
+                continue;
+            }
+
+            return password;
+        }
     }
 
     public static String inputMinLength(String message, int minLength) {

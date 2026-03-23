@@ -26,8 +26,8 @@ public class AuthUI {
     public static void register() {
         ConsoleUtil.printHeader("REGISTER");
 
-        String username = ConsoleUtil.inputMinLength("Enter username: ", 4);
-        String password = ConsoleUtil.inputStrongPassword("Enter password: ");
+        String username = ConsoleUtil.inputRequired("Enter username: ");
+        String password = ConsoleUtil.inputStrongPasswordWithConfirm();
 
         int roleChoice = ConsoleUtil.inputRole();
         String role = roleChoice == 2 ? "MANAGER" : "EMPLOYEE";
@@ -35,13 +35,13 @@ public class AuthUI {
         String name = ConsoleUtil.inputRequired("Enter full name: ");
         String email = ConsoleUtil.inputEmail("Enter email: ");
         String phone = ConsoleUtil.inputPhone("Enter phone: ");
-        String department = ConsoleUtil.inputRequired("Enter department: ");
+        String department = ConsoleUtil.inputDepartment("Enter department: ");
 
         String designation = "";
         String supervisorId = "";
 
         if (role.equals("EMPLOYEE")) {
-            designation = ConsoleUtil.inputRequired("Enter designation: ");
+            designation = ConsoleUtil.inputDesignation("Enter designation: ");
             supervisorId = ConsoleUtil.inputRequired("Enter Manager ID: ");
         }
 
