@@ -38,7 +38,7 @@ public class DateUtil {
         if (date == null || date.trim().isEmpty())
             return false;
 
-        String[] parts = date.split("/");
+        String[] parts = date.split("-");
         if (parts.length != 3)
             return false;
 
@@ -74,8 +74,8 @@ public class DateUtil {
     }
 
     public static boolean isEndDateAfterStart(String start, String end) {
-    String[] s = start.split("/");
-    String[] e = end.split("/");
+    String[] s = start.split("-");
+    String[] e = end.split("-");
 
     int sd = Integer.parseInt(s[0]);
     int sm = Integer.parseInt(s[1]);
@@ -86,11 +86,11 @@ public class DateUtil {
     int ey = Integer.parseInt(e[2]);
 
     // Compare years
-    if (ey > sy) return true;
+    if (ey >= sy) return true;
     if (ey < sy) return false;
 
     // Same year → compare month
-    if (em > sm) return true;
+    if (em >= sm) return true;
     if (em < sm) return false;
 
     // Same month → compare day

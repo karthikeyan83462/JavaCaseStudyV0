@@ -61,17 +61,18 @@ public class LeaveUI {
     private static void applyLeave(User user) {
         ConsoleUtil.printHeader("APPLY FOR LEAVE");
         String startDate = ConsoleUtil.inputRequired("Enter start date (dd-MM-yyyy): ");
-                if (!DateUtil.isValidDate(startDate)) {
-            ConsoleUtil.printError("Invalid start date!");
-            ConsoleUtil.pause();
-            return;
-        }
+                // if (!DateUtil.isValidDate(startDate)) {
+            // ConsoleUtil.printError("Invalid start date!");
+            // ConsoleUtil.pause();
+            // return;
+            while (!DateUtil.isValidDate(startDate)){
+                startDate = ConsoleUtil.inputRequired("Enter valid start date (dd-MM-yyyy): ");
+            }
+        
         String endDate = ConsoleUtil.inputRequired("Enter end date (dd-MM-yyyy): ");
-        if (!DateUtil.isValidDate(endDate)) {
-            ConsoleUtil.printError("Invalid end date!");
-            ConsoleUtil.pause();
-            return;
-        }
+        while (!(DateUtil.isValidDate(endDate) && DateUtil.isEndDateAfterStart(startDate, endDate))){
+                endDate = ConsoleUtil.inputRequired("Enter valid end date (dd-MM-yyyy): ");
+            }
         String reason = ConsoleUtil.inputRequired("Enter reason for leave: ");
 
         if (LeaveService.applyLeave(user.getUserId(), startDate, endDate, reason)) {

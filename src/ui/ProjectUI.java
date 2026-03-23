@@ -61,40 +61,39 @@ public class ProjectUI {
     private static void createProject() {
         ConsoleUtil.printHeader("CREATE NEW PROJECT");
         String name = ConsoleUtil.inputRequired("Enter project name: ");
-        if (name.length() < 3) {
-                ConsoleUtil.printError("Name must be at least 3 characters!");
-                ConsoleUtil.pause();
-                return;
+        while (name.length() < 3){
+                name = ConsoleUtil.inputRequired("Name must be at least 3 characters:");
             }
 
         String description = ConsoleUtil.inputRequired("Enter description: ");
-        if (description.length() < 5) {
-            ConsoleUtil.printError("Description must be at least 5 characters!");
-            ConsoleUtil.pause();
-            return;
-        }
+        // if (description.length() < 5) {
+        //     ConsoleUtil.printError("Description must be at least 5 characters!");
+        //     ConsoleUtil.pause();
+        //     return;
+        // }
+        while (description.length() < 5){
+                description = ConsoleUtil.inputRequired("Description must be at least 5 characters!");
+            }
 
         String startDate = ConsoleUtil.inputRequired("Enter start date (dd-MM-yyyy): ");
-        if (!DateUtil.isValidDate(startDate)) {
-            ConsoleUtil.printError("Invalid start date!");
-            ConsoleUtil.pause();
-            return;
-        }
+        while (!DateUtil.isValidDate(startDate)){
+                startDate = ConsoleUtil.inputRequired("Enter valid start date (dd-MM-yyyy): ");
+            }
 
         String endDate = ConsoleUtil.inputRequired("Enter end date (dd-MM-yyyy): ");
-
-        if (!DateUtil.isValidDate(endDate)) {
-            ConsoleUtil.printError("Invalid end date!");
-            ConsoleUtil.pause();
-            return;
-        }
+        while ((!DateUtil.isValidDate(endDate))&&(!DateUtil.isEndDateAfterStart(startDate, endDate))){
+                endDate = ConsoleUtil.inputRequired("Enter valid end date (dd-MM-yyyy): ");
+            }
        
         String skills = ConsoleUtil.inputRequired("Enter required skills (semicolon separated): ");
-        if (!skills.contains(";")) {
-            ConsoleUtil.printError("Please enter skills separated by semicolon (e.g. Java;SQL)!");
-            ConsoleUtil.pause();
-            return;
-        }
+        // if (!skills.contains(";")) {
+        //     ConsoleUtil.printError("Please enter skills separated by semicolon (e.g. Java;SQL)!");
+        //     ConsoleUtil.pause();
+        //     return;
+        // }
+        while (!skills.contains(";")){
+                skills = ConsoleUtil.inputRequired("Please enter skills separated by semicolon (e.g. Java;SQL)!");
+            }
 
         if (ProjectService.createProject(name, description, startDate, endDate, skills)) {
             ConsoleUtil.printSuccess("Project created successfully!");
