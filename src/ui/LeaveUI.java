@@ -4,6 +4,8 @@ import model.Leave;
 import model.User;
 import service.LeaveService;
 import util.ConsoleUtil;
+import util.DateUtil;
+
 import java.util.List;
 
 public class LeaveUI {
@@ -59,7 +61,17 @@ public class LeaveUI {
     private static void applyLeave(User user) {
         ConsoleUtil.printHeader("APPLY FOR LEAVE");
         String startDate = ConsoleUtil.inputRequired("Enter start date (dd-MM-yyyy): ");
+                if (!DateUtil.isValidDate(startDate)) {
+            ConsoleUtil.printError("Invalid start date!");
+            ConsoleUtil.pause();
+            return;
+        }
         String endDate = ConsoleUtil.inputRequired("Enter end date (dd-MM-yyyy): ");
+        if (!DateUtil.isValidDate(endDate)) {
+            ConsoleUtil.printError("Invalid end date!");
+            ConsoleUtil.pause();
+            return;
+        }
         String reason = ConsoleUtil.inputRequired("Enter reason for leave: ");
 
         if (LeaveService.applyLeave(user.getUserId(), startDate, endDate, reason)) {

@@ -74,28 +74,30 @@ public class DateUtil {
     }
 
     public static boolean isEndDateAfterStart(String start, String end) {
-        if (!isValidDate(start) || !isValidDate(end))
-            return false;
+    String[] s = start.split("/");
+    String[] e = end.split("/");
 
-        String[] s = start.split("-");
-        String[] e = end.split("-");
+    int sd = Integer.parseInt(s[0]);
+    int sm = Integer.parseInt(s[1]);
+    int sy = Integer.parseInt(s[2]);
 
-        int sd = Integer.parseInt(s[0]);
-        int sm = Integer.parseInt(s[1]);
-        int sy = Integer.parseInt(s[2]);
+    int ed = Integer.parseInt(e[0]);
+    int em = Integer.parseInt(e[1]);
+    int ey = Integer.parseInt(e[2]);
 
-        int ed = Integer.parseInt(e[0]);
-        int em = Integer.parseInt(e[1]);
-        int ey = Integer.parseInt(e[2]);
+    // Compare years
+    if (ey > sy) return true;
+    if (ey < sy) return false;
 
-        // Compare year → month → day
-        if (ey > sy) return true;
-        if (ey < sy) return false;
+    // Same year → compare month
+    if (em > sm) return true;
+    if (em < sm) return false;
 
-        if (em > sm) return true;
-        if (em < sm) return false;
+    // Same month → compare day
+    if (ed >= sd) return true;  // <-- ALLOWS SAME DATE
 
-        return ed > sd;
+    return false;
+
     }
 
     private static boolean isNumber(String s) {
