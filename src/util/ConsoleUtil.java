@@ -1,6 +1,7 @@
 package util;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ConsoleUtil {
     private static final Scanner scanner = new Scanner(System.in);
@@ -56,5 +57,66 @@ public class ConsoleUtil {
 
     public static void printLine(String message) {
         System.out.println(message);
+    }
+
+        // ---------- VALIDATION HELPERS ----------
+
+    public static String inputRequired(String message) {
+        String input;
+        do {
+            input = ConsoleUtil.input(message).trim();
+            if (input.isEmpty()) {
+                ConsoleUtil.printError("This field cannot be empty.");
+            }
+        } while (input.isEmpty());
+        return input;
+    }
+
+    public static String inputMinLength(String message, int minLength) {
+        String input;
+        do {
+            input = ConsoleUtil.input(message).trim();
+            if (input.length() < minLength) {
+                ConsoleUtil.printError("Must be at least " + minLength + " characters.");
+            }
+        } while (input.length() < minLength);
+        return input;
+    }
+
+    public static String inputEmail(String message) {
+        String email;
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        do {
+            email = ConsoleUtil.input(message).trim();
+            if (!Pattern.matches(emailRegex, email)) {
+                ConsoleUtil.printError("Invalid email format.");
+            }
+        } while (!Pattern.matches(emailRegex, email));
+        return email;
+    }
+
+    public static String inputPhone(String message) {
+        String phone;
+        do {
+            phone = ConsoleUtil.input(message).trim();
+            if (!phone.matches("\\d{10}")) {
+                ConsoleUtil.printError("Phone number must be 10 digits.");
+            }
+        } while (!phone.matches("\\d{10}"));
+        return phone;
+    }
+
+    public static int inputRole() {
+        int choice;
+        do {
+            System.out.println("\nSelect Role:");
+            System.out.println("1. Employee");
+            System.out.println("2. Manager");
+            choice = ConsoleUtil.inputInt("Enter choice: ");
+            if (choice != 1 && choice != 2) {
+                ConsoleUtil.printError("Invalid choice. Please select 1 or 2.");
+            }
+        } while (choice != 1 && choice != 2);
+        return choice;
     }
 }
