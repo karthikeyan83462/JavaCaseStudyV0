@@ -145,7 +145,20 @@ public class ProjectUI {
     private static void assignEmployee() {
         ConsoleUtil.printHeader("ASSIGN EMPLOYEE TO PROJECT");
         String projectId = ConsoleUtil.input("Enter project ID: ");
+        
+        if (projectId.trim().equals("")) {
+            ConsoleUtil.printError("Project ID cannot be empty!");
+            ConsoleUtil.pause();
+            return;
+        }
+
         String empId = ConsoleUtil.input("Enter employee ID: ");
+        
+        if (empId.trim().equals("")) {
+            ConsoleUtil.printError("Employee ID cannot be empty!");
+            ConsoleUtil.pause();
+            return;
+        }
 
         Project proj = ProjectService.getProjectById(projectId);
         User emp = EmployeeService.getEmployeeById(empId);
