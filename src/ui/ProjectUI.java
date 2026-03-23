@@ -5,6 +5,7 @@ import model.User;
 import service.ProjectService;
 import service.EmployeeService;
 import util.ConsoleUtil;
+import util.DateUtil;
 import java.util.List;
 
 public class ProjectUI {
@@ -60,10 +61,40 @@ public class ProjectUI {
     private static void createProject() {
         ConsoleUtil.printHeader("CREATE NEW PROJECT");
         String name = ConsoleUtil.inputRequired("Enter project name: ");
+        if (name.length() < 3) {
+                ConsoleUtil.printError("Name must be at least 3 characters!");
+                ConsoleUtil.pause();
+                return;
+            }
+
         String description = ConsoleUtil.inputRequired("Enter description: ");
+        if (description.length() < 5) {
+            ConsoleUtil.printError("Description must be at least 5 characters!");
+            ConsoleUtil.pause();
+            return;
+        }
+
         String startDate = ConsoleUtil.inputRequired("Enter start date (dd-MM-yyyy): ");
+        if (!DateUtil.isValidDate(startDate)) {
+            ConsoleUtil.printError("Invalid start date!");
+            ConsoleUtil.pause();
+            return;
+        }
+
         String endDate = ConsoleUtil.inputRequired("Enter end date (dd-MM-yyyy): ");
+
+        if (!DateUtil.isValidDate(endDate)) {
+            ConsoleUtil.printError("Invalid end date!");
+            ConsoleUtil.pause();
+            return;
+        }
+       
         String skills = ConsoleUtil.inputRequired("Enter required skills (semicolon separated): ");
+        if (!skills.contains(";")) {
+            ConsoleUtil.printError("Please enter skills separated by semicolon (e.g. Java;SQL)!");
+            ConsoleUtil.pause();
+            return;
+        }
 
         if (ProjectService.createProject(name, description, startDate, endDate, skills)) {
             ConsoleUtil.printSuccess("Project created successfully!");
