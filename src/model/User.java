@@ -77,7 +77,7 @@ public class User {
         if (line == null || line.trim().isEmpty()) {
             return null;
         }
-        String[] parts = line.split("\\|", -1);  // -1 to preserve trailing empty strings
+        String[] parts = line.split("\\|", -1);  
         if (parts.length >= 4) {
             if (parts.length >= 12) {
                 return new User(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5],
